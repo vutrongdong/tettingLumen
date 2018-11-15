@@ -27,5 +27,15 @@ return [
             'update' => 'Sửa nhóm quyền',
             'delete' => 'Xóa nhóm quyền'
         ]
+    ],
+
+    'position' => [
+        'title' => 'Quản lý chức danh',
+        'list' => [
+            'view' => 'Xem chức danh',
+            'create' => 'Tạo mới chức danh',
+            'update' => 'Sửa chức danh',
+            'delete' => 'Xóa chức danh'
+        ]
     ]
 ];

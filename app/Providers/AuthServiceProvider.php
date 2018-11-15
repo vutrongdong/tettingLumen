@@ -17,6 +17,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         \App\User::class => \App\Policies\UserPolicy::class,
         \App\Repositories\Roles\Role::class => \App\Policies\RolePolicy::class,
+        \App\Repositories\Positions\Position::class => \App\Policies\PositionPolicy::class,
     ];
 
     /**
@@ -77,6 +78,11 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('role.create', 'App\Policies\RolePolicy@create');
         Gate::define('role.update', 'App\Policies\RolePolicy@update');
         Gate::define('role.delete', 'App\Policies\RolePolicy@delete');
+        // position gate
+        Gate::define('position.view', 'App\Policies\PositionPolicy@view');
+        Gate::define('position.create', 'App\Policies\PositionPolicy@create');
+        Gate::define('position.update', 'App\Policies\PositionPolicy@update');
+        Gate::define('position.delete', 'App\Policies\PositionPolicy@delete');
     }
 
     /**
@@ -86,19 +92,6 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Here you may define how you wish users to be authenticated for your Lumen
-        // application. The callback which receives the incoming request instance
-        // should return either a User instance or null. You're free to obtain
-        // the User instance via an API token or any other method necessary.
-
-        // $this->app['auth']->viaRequest('api', function ($request) {
-        //     if ($request->input('api_token')) {
-        //         return User::where('api_token', $request->input('api_token'))->first();
-        //     }
-        // });
-        //
-        //
-        //
 
         $this->registerPassport();
         $this->registerPolicies();
